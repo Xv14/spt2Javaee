@@ -1,2 +1,2 @@
-# spt2Jee
+# spt2Java-ee
 Shared repository
