@@ -1,0 +1,261 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrought"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+<h:head>
+	<ui:insert name="pageTitle">Events</ui:insert>
+	<h:outputStylesheet library="css" name="library/font-awesome.min.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="library/bootstrap.min.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="library/jquery-ui.min.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="library/owl.carousel.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css"
+		name="library/jquery.mb.YTPlayer.min.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="style.css"></h:outputStylesheet>
+
+</h:head>
+<body>
+	<ui:include src="/template/header.xhtml" />
+
+	<!-- Wrap -->
+	<div id="wrap">
+
+		<!-- Header -->
+		<header id="header" class="header">
+		<div class="container">
+
+			<!-- Logo -->
+			<div class="logo float-left">
+				<a href="#{request.contextPath}/pages/index.jsf" title=""><img
+					src="#{request.contextPath}/resources/images/logo-header.png"
+					alt="" /></a>
+			</div>
+			<!-- End Logo -->
+			<!-- Bars -->
+			<div class="bars" id="bars"></div>
+			<!-- End Bars -->
+			<!--Navigation-->
+			<nav class="navigation nav-c" id="navigation" data-menu-type="1200">
+			<div class="nav-inner">
+				<a href="#" class="bars-close" id="bars-close">Close</a>
+				<div class="tb">
+					<div class="tb-cell">
+						<ul class="menu-list text-uppercase">
+							<li><a href="#{request.contextPath}/pages/ListEvent.jsf">Home</a>
+
+							</li>
+
+							<li><a
+								href="#{request.contextPath}/witnesscard/witnesscard.jsf">Witness
+									Card</a></li>
+
+							<li class="current-menu-parent"><a
+								href="{request.contextPath}/pages/ListEvent.jsf">Events</a></li>
+
+
+							<li><a href="">About</a></li>
+							<li><a href="">Contact</a></li>
+
+							<li><a href="#">Profile</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			</nav>
+			<!--End Navigation-->
+
+		</div>
+		</header>
+		<!-- End Header -->
+	</div>
+
+
+
+	<!--Banner-->
+	<section class="sub-banner"> <!--Background-->
+	<div class="bg-parallax bg-1"></div>
+	<!--End Background--> <!-- Logo -->
+	<div class="logo-banner text-center">
+		<a href="" title=""> <img
+			src="#{request.contextPath}/resources/images/logo-banner.png" alt="" />
+		</a>
+	</div>
+	<!-- Logo --> </section>
+	<!--End Banner-->
+	<!-- Main -->
+	<div class="main">
+		<div class="container">
+			<div class="main-cn element-page bg-white clearfix">
+				<!--Breakcrumb-->
+				<section class="breakcrumb-sc">
+				<ul class="breadcrumb arrow">
+					<li>Event Management</li>
+				</ul>
+				</section>
+				<!--End Breakcrumb-->
+
+				<section class="user-profile">
+				<div class="row">
+					<div class="col-md-3">
+						<div class="user-profile__header">
+							<h4>Mahmoud Ouri</h4>
+
+							<p>
+								<img src="#{request.contextPath}/resources/images/user/2.jpg"
+									alt="" />
+							</p>
+						</div>
+						<ul class="user-profile__navigation">
+							<li><a href="#{request.contextPath}/pages/ListEvent.jsf"><img
+									src="#{request.contextPath}/resources/images/icon/icon-user.png"
+									alt="" />Events</a></li>
+
+							<li class="current"><a
+								href="#{request.contextPath}/pages/form.jsf"><img
+									src="#{request.contextPath}/resources/images/icon/icon-cart.png"
+									alt="" />Add An Event</a></li>
+									<li class="current"><a
+								href="#{request.contextPath}/pages/Events/Max"><img
+									src="#{request.contextPath}/resources/images/icon/icon-cart.png"
+									alt="" />Most Categorie Having Events</a></li>
+						</ul>
+
+
+
+					</div>
+					<h:form>
+						<div class="col-md-3">
+							<h2>Events</h2>
+							<h:outputText value="recherche" />
+							<h:inputText value="#{eventBean.name}" />
+
+
+							<h:commandButton class="awe-btn awe-btn-1 awe-btn-medium"
+								value="recher" action="#{eventBean.recherche()}" />
+
+							<h:dataTable class="table" value="#{eventBean.evenements}"
+								var="x">
+
+								<f:facet name="header">
+									<h:outputText value="Manage Events" />
+								</f:facet>
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="name Event" />
+									</f:facet>
+									<h:outputText value="#{x.nameEvent}" />
+								</h:column>
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="dateDebutEvent" />
+									</f:facet>
+									<h:outputText value="#{x.dateDebutEvent}" />
+								</h:column>
+
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="dateFinEvent" />
+									</f:facet>
+									<h:outputText value="#{x.dateFinEvent}" />
+								</h:column>
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="description" />
+									</f:facet>
+									<h:outputText value="#{x.description}" />
+								</h:column>
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="Pays" />
+									</f:facet>
+									<h:outputText value="#{x.lieuxPays}" />
+								</h:column>
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="Ville" />
+									</f:facet>
+									<h:outputText value="#{x.lieuxVille}" />
+								</h:column>
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="Rue" />
+									</f:facet>
+									<h:outputText value="#{x.lieuxRue}" />
+								</h:column>
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="Type Events" />
+									</f:facet>
+									<h:outputText value="#{x.typeEvent}" />
+								</h:column>
+
+								<h:column>
+									<f:facet name="header">Delete</f:facet>
+
+									<h:commandButton class="awe-btn awe-btn-1 awe-btn-medium"
+										value="Delete" action="#{eventBean.dodelete()}">
+										<f:setPropertyActionListener target="#{eventBean.evenement}"
+											value="#{x}" onclick="return confirm('Are you sure?')" />
+									</h:commandButton>
+
+								</h:column>
+								<h:column>
+									<f:facet name="header">Update</f:facet>
+
+									<h:commandButton class="awe-btn awe-btn-1 awe-btn-medium"
+										value="Update Event" action="GestionEvent?faces-redirect=true">
+										<f:setPropertyActionListener value="#{x}"
+											target="#{eventBean.evenement}" />
+									</h:commandButton>
+
+								</h:column>
+								<h:column>
+									<f:facet name="header">PDF</f:facet>
+
+									<h:commandButton class="awe-btn awe-btn-1 awe-btn-medium"
+										value="PDF Export" action="#{eventBean.GeneratePdfEvent(x)}">
+									</h:commandButton>
+
+								</h:column>
+
+
+
+
+							</h:dataTable>
+							<h:commandButton class="awe-btn awe-btn-1 awe-btn-medium"
+								action="form?faces-redirect=true" value="Add New Event" />
+							<h:commandButton class="awe-btn awe-btn-1 awe-btn-medium"
+								value="affect agente" action="affect?faces-redirect=true">
+								<f:setPropertyActionListener value="#{x}"
+									target="#{eventBean.evenement}" />
+							</h:commandButton>
+
+
+						</div>
+					</h:form>
+
+				</div>
+				</section>
+
+
+			</div>
+
+
+
+
+		</div>
+	</div>
+
+
+
+
+
+
+
+	<ui:include src="/template/footer.xhtml" />
+
+</body>
+</html>

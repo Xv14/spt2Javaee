@@ -1,0 +1,99 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+<head>
+<title>
+lllllll
+</title>
+</head>
+<body>
+<h:form>
+
+	<h:dataTable class="table" value="#{eventBean.evenements}" var="x">
+
+			<f:facet name="header">
+				<h:outputText value="Manage Events" />
+			</f:facet>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="name Event" />
+				</f:facet>
+				<h:outputText value="#{x.nameEvent}"  />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="dateDebutEvent" />
+				</f:facet>
+				<h:outputText value="#{x.dateDebutEvent}"  />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="dateFinEvent" />
+				</f:facet>
+				<h:outputText value="#{x.dateFinEvent}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="description" />
+				</f:facet>
+				<h:outputText value="#{x.description}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Pays" />
+				</f:facet>
+				<h:outputText value="#{x.lieuxPays}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Ville" />
+				</f:facet>
+				<h:outputText value="#{x.lieuxVille}"  />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Rue" />
+				</f:facet>
+				<h:outputText value="#{x.lieuxRue}"  />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Type Events" />
+				</f:facet>
+				<h:outputText value="#{x.typeEvent}"/>
+			</h:column>
+			<h:column>
+	<h:commandButton action="#{eventBean.affect()}" value="affect" >
+	<f:setPropertyActionListener value="#{x}"
+						target="#{eventBean.evenement}" />
+						</h:commandButton>
+	</h:column>
+	</h:dataTable>
+	</h:form>
+	
+	<h:form rendered="#{eventBean.vu}" >
+<h:panelGrid>
+	
+	<h:selectOneMenu value="#{eventBean.user}" converter="#{emp}">
+				<f:selectItems value="#{eventBean.users}" var="cat"
+					itemValue="#{cat}" itemLabel="#{cat.firstname}" />
+			</h:selectOneMenu>
+				<h:commandButton  action="#{eventBean.afecteragent()}"
+				value="affect" />
+	
+			</h:panelGrid>
+			<h:panelGrid>
+
+			
+			
+			<h:commandButton  action="ListEvent?faces-redirect=true"
+				value="return" />
+
+
+		
+		</h:panelGrid>
+			</h:form>
+			</body>
+</html>
